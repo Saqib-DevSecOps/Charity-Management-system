@@ -1,0 +1,291 @@
+{% extends 'website/base.html' %}
+{% load static %}
+
+{% block base_content %}
+<!-- hero section start -->
+<section class="section hero-section bg-ico-hero" id="home">
+    <div class="bg-overlay bg-primary"></div>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-12">
+                <div class="text-white-50 text-center">
+                    <h1 class="text-white font-weight-semibold mb-3 hero-title">
+                        Charity management system
+                    </h1>
+                    <blockquote class="blockquote">
+                        <p>
+                            O you who believe! Do not cancel your charity by reminders of your generosity or by
+                            injury, like those who spend their substance to be seen of men, but believe neither in
+                            Allah nor in the Last Day
+                        </p>
+                        <footer class="blockquote-footer text-white">Al-Quran <cite title="Source Title">(2:264)</cite>
+                        </footer>
+                    </blockquote>
+                    <div class="row justify-content-center">
+
+                        <div class="cols m-2">
+                            <div class="p-4 border rounded">
+                                <h1 class="text-white"><i class="fa fa-users"></i></h1>
+                                <p class="mb-0">00{{ users }}</p>
+                            </div>
+                        </div>
+
+                        <div class="cols m-2">
+                            <div class="p-4 border rounded">
+                                <h1 class="text-white"><i class="fa fa-list"></i></h1>
+                                <p class="mb-0">00{{ projects_count }}</p>
+                            </div>
+                        </div>
+
+                        <div class="cols m-2">
+                            <div class="p-4 border rounded">
+                                <h1 class="text-white"><i class="fa fa-coins"></i></h1>
+                                <p class="mb-0">{{ funds.donation_amount__sum }}</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<section class="section" id="projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center mb-5">
+                    <div class="small-title">Most Recent</div>
+                    <h4>Top Donation Project</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="col-lg-12 row">
+            {% for project in projects %}
+            <div class="col-4">
+                <div class="card team-box">
+                    <div class="card-body">
+
+                        <div class="mt-3">
+                            <h5 class="text-center">{{ project.name }}</h5>
+                            <P class="text-justify mb-2">{{ project.description|truncatechars:300 }}</P>
+                            Required amount : {{project.required_amount}}<br>
+                            Donated amount : {{project.donation_amount}}
+
+                            <div class="progress mt-1">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 100%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top text-center">
+                        <div class="d-flex mb-0 team-social-links">
+                            <div class="flex-fill">
+                                <b>
+                                    <a href="{% url 'website:project-detail' project.pk %}" class="text-primary">
+                                        <i class="mdi mdi-link"></i> View
+                                    </a>
+                                </b>
+                            </div>
+                            <div class="flex-fill">
+                                <b>
+                                    <a href="{% url 'customer-portal:donate' project.pk %}" class="text-warning">
+                                        <i class="fa fa-coins"></i> Donate
+                                    </a>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<section class="section bg-white" id="roadmap">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center mb-5">
+                    <div class="small-title">Timeline</div>
+                    <h4>Development Road map</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end row -->
+
+        <div class="row mt-4">
+            <div class="col-lg-12">
+                <div class="hori-timeline">
+                    <div class="owl-carousel owl-theme events navs-carousel" id="timeline-carousel">
+
+                        <div class="item event-list">
+                            <div>
+                                <a href="#">
+                                    <div class="event-date">
+                                        <div class="mb-1"><i
+                                                class="bx bx-calendar"></i> 5th October, 2021
+                                        </div>
+                                        <h5 class="mb-4">10% Project</h5>
+
+                                    </div>
+                                    <div class="event-down-icon">
+                                        <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
+                                    </div>
+
+                                    <div class="mt-3 px-3">
+                                        <p class="text-muted">
+                                            Project Idea, Documentation and Presentations
+                                        </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="item event-list">
+                            <div>
+                                <a href="#">
+                                    <div class="event-date">
+                                        <div class="mb-1"><i
+                                                class="bx bx-calendar"></i> 21st December, 2021
+                                        </div>
+                                        <h5 class="mb-4">30% Project</h5>
+
+                                    </div>
+                                    <div class="event-down-icon">
+                                        <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
+                                    </div>
+
+                                    <div class="mt-3 px-3">
+                                        <p class="text-muted">
+                                            Interface, Prototype, Documentation and Presentation
+                                        </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="item event-list">
+                            <div>
+                                <a href="#">
+                                    <div class="event-date">
+                                        <div class="mb-1"><i
+                                                class="bx bx-calendar"></i> 20th March, 2021
+                                            <small>(Expected)</small>
+                                        </div>
+                                        <h5 class="mb-4">60% Project</h5>
+
+                                    </div>
+                                    <div class="event-down-icon">
+                                        <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
+                                    </div>
+
+                                    <div class="mt-3 px-3">
+                                        <p class="text-muted">
+                                            Root Access, Admin Portal and Customer Portal
+                                        </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+                        <div class="item event-list">
+                            <div>
+                                <a href="#">
+                                    <div class="event-date">
+                                        <div class="mb-1"><i
+                                                class="bx bx-calendar"></i> 5th June, 2021 <small>(Expected)</small>
+                                        </div>
+                                        <h5 class="mb-4">100% Project</h5>
+
+                                    </div>
+                                    <div class="event-down-icon">
+                                        <i class="bx bx-down-arrow-circle h1 text-primary down-arrow-icon"></i>
+                                    </div>
+
+                                    <div class="mt-3 px-3">
+                                        <p class="text-muted">
+                                            Payment System and Fully functional Live Application
+                                        </p>
+                                    </div>
+                                </a>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+<section class="section" id="projects-all">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center mb-5">
+                    <div class="small-title">Need Help</div>
+                    <h4>Global Donation Projects</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 row">
+            {% for project in projects %}
+            <div class="col-4">
+                <div class="card border">
+                    <div class="card-body">
+
+                        <div class="mt-3">
+                            <h5 class="text-center">{{ project.name }}</h5>
+                            <P class="text-justify mb-2">{{ project.description|truncatechars:300 }}</P>
+                            Total amount : {{project.required_amount}}<br>
+                            Donated amount : {{project.donation_amount}}
+                               <div class="progress mt-1">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated"
+                                         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+                                         style="width: 100%"></div>
+                            </div
+                        </div>
+                    </div>
+                    <div class="card-footer bg-transparent border-top text-center">
+                        <div class="d-flex mb-0 team-social-links">
+                            <div class="flex-fill">
+                                <b>
+                                    <a href="{% url 'website:project-detail' project.pk %}" class="text-primary">
+                                        <i class="mdi mdi-link"></i> View
+                                    </a>
+                                </b>
+                            </div>
+                            <div class="flex-fill">
+                                <b>
+                                    <a href="{% url 'customer-portal:donate' project.pk %}" class="text-warning">
+                                        <i class="fa fa-coins"></i> Donate
+                                    </a>
+                                </b>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <!-- end row -->
+    </div>
+    <!-- end container -->
+</section>
+
+{% endblock %}

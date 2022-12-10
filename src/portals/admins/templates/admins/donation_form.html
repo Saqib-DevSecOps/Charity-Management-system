@@ -1,0 +1,28 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block base_title %}Update ProjectType{% endblock %}
+
+{% block page_heading %}
+    Update Donation
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+
+        <div class="card col-sm-10">
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form.media }}
+                    {{ form| crispy }}
+                    <button class="btn btn-success" type="submit"><i class="fa fa-check"></i> Submit</button>
+                </form>
+                <div class="mt-3">
+                    <a href="{% url 'admins:donation-list' %}"><i class="fa fa-arrow-left"></i> Back to List</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

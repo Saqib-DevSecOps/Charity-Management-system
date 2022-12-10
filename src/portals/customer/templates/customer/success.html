@@ -1,0 +1,50 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+<style>
+    body {
+    background: dark;
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
+
+</style>
+<div class="row justify-content-center">
+
+    <div class="col-8">
+        <div class="text-center">
+            <h4>Your Donation is Successfully Transferred</h4>
+
+        </div>
+
+
+
+
+                <div class="row m-5 justify-content-center">
+<!--                    <div class="col-md-6 text-center">-->
+<!--                        <p class="font-weight-bold mb-4">Client Information</p>-->
+<!--                        <p class="mb-1">Email Address : {{invoice.user.email}}</p>-->
+<!--                        <p class="mb-1">Username : {{invoice.user.username}}</p>-->
+<!--                        <p class="mb-1">Address :{{invoice.user.address}}</p>-->
+<!--                        <p class="mb-1">Phone No :{{invoice.user.phone_number}}</p>-->
+<!--                    </div>-->
+
+                    <div class="col-md-7 text-center shadow p-5">
+                        <p class="font-weight-bold mb-4">Payment Details</p>
+                        <p class="mb-1"><span class="text-muted">Transaction Id : </span> {{invoice.transaction_id}}</p>
+                        <p class="mb-1"><span class="text-muted">Payment Type: </span> {{invoice.payment_method}}</p>
+                        <p class="mb-1"><span class="text-muted">project : </span> {{invoice.project}}</p>
+                        <p class="mb-1"><span class="text-muted">Donated Amount: </span> {{invoice.amount}}</p>
+                        <p class="mb-1"><span class="text-muted">Is paid : </span> {{invoice.is_paid}}</p>
+                        <p class="mb-1 mt-2"><span class="text-muted"><a href="{% url 'website:home' %}">Go Back to Home</a></p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+
+

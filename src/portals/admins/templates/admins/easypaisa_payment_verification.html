@@ -1,0 +1,40 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block base_title %} Payment Verification {% endblock %}
+{% block page_heading %}
+    Payment Verification
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="row justify-content-center">
+        <div class="col-8">
+
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">
+                        Make Sure you are careful about this check? If you check this it will mark this
+                        transaction as successful so if user has paid then you can check this.
+                    </p>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <input class="form-control" placeholder="Enter transaction ID here." type="search"
+                               id="transaction_id"
+                               name="transaction_id">
+                        <br>
+                        <button class="btn btn-primary" type="submit">
+                            Submit
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+

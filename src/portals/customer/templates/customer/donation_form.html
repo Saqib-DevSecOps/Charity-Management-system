@@ -1,0 +1,52 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block base_title %} Donation {% endblock %}
+
+{% block page_heading %}
+    Donation
+{% endblock %}
+
+{% block content %}
+    <div class="row justify-content-center">
+
+        <div class="col-8">
+
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form.media }}
+                        {{ form| crispy }}
+                        <button class="btn btn-success" type="submit"><i class="fa fa-check"></i> Submit</button>
+                    </form>
+                    <div class="mt-3">
+                        <a href="{% url 'admins:donation-list' %}"><i class="fa fa-arrow-left"></i> Back to List</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-4">
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-title">
+                        <i class="fa fa-exclamation-circle"></i> Steps To Donate.
+                    </p>
+                    <p class="card-text">
+                    <ol>
+                        <li>Pay with Stripe
+                        </li>
+                        <li>Enter amount you want to donate </li>
+                        <li>Select project of your choice</li>
+                        <li>Select <b>Stripe</b> as your payment method</li>
+                        <li>Wait for 24 hours then check the status</li>
+                    </ol>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
